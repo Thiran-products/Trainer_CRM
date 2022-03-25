@@ -1,0 +1,28 @@
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\bin\Release\Registration App.exe.config
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\bin\Release\Registration App.exe
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\bin\Release\Registration App.pdb
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\bin\Release\EntityFramework.dll
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\bin\Release\EntityFramework.SqlServer.dll
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\bin\Release\System.Data.SQLite.dll
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\bin\Release\System.Data.SQLite.EF6.dll
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\bin\Release\System.Data.SQLite.Linq.dll
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\bin\Release\EntityFramework.xml
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\bin\Release\EntityFramework.SqlServer.xml
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\bin\Release\System.Data.SQLite.xml
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration_App.frmRegistrationApp.resources
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration_App.frmAttendance.resources
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration_App.frmAttendanceReport.resources
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration_App.frmCategory.resources
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration_App.frmCourseMaster.resources
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration_App.frmExpenses.resources
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration_App.frmExpensesReport.resources
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration_App.frmFeeDetails.resources
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration_App.frmFeeDetailsReport.resources
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration_App.frmRegistration.resources
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration_App.frmRegistrationReport.resources
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration_App.Properties.Resources.resources
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration App.csproj.GenerateResource.cache
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration App.csproj.CoreCompileInputs.cache
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration App.csproj.CopyComplete
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration App.exe
+D:\Datas\OneDrive\Desktop\Registration App\Registration App\obj\Release\Registration App.pdb

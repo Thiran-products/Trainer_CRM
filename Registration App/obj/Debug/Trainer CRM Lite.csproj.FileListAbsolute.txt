@@ -1,0 +1,66 @@
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\Registration App.exe.config
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\Registration App.exe
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\Registration App.pdb
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\EntityFramework.dll
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\EntityFramework.SqlServer.dll
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\System.Data.SQLite.dll
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\System.Data.SQLite.EF6.dll
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\EntityFramework.xml
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\EntityFramework.SqlServer.xml
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\System.Data.SQLite.xml
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Trainer CRM Lite.csproj.AssemblyReference.cache
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmRegistrationApp.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmAttendance.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmAttendanceReport.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmCategory.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmCourseMaster.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmExpenses.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmExpensesReport.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmFeeDetails.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmFeeDetailsReport.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmRegistration.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmRegistrationReport.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.Properties.Resources.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Trainer CRM Lite.csproj.GenerateResource.cache
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Trainer CRM Lite.csproj.CoreCompileInputs.cache
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Trainer CRM Lite.csproj.CopyComplete
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration App.exe
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration App.pdb
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmLogin.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmLicense.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmLocation.resources
+D:\Datas\OneDrive\Desktop\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmDashboard.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\Registration App.exe.config
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\Registration App.exe
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\Registration App.pdb
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\EntityFramework.dll
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\System.Data.SQLite.dll
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\EntityFramework.xml
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\System.Data.SQLite.xml
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Trainer CRM Lite.csproj.AssemblyReference.cache
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmRegistrationApp.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmAttendance.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmAttendanceReport.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmCategory.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmCourseMaster.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmDashboard.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmExpenses.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmExpensesReport.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmFeeDetails.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmFeeDetailsReport.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmLicense.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmLocation.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmLogin.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmRegistration.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.frmRegistrationReport.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration_App.Properties.Resources.resources
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Trainer CRM Lite.csproj.GenerateResource.cache
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Trainer CRM Lite.csproj.CoreCompileInputs.cache
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Trainer CRM Lite.csproj.CopyComplete
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration App.exe
+C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration App.pdb
