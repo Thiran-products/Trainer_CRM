@@ -213,6 +213,16 @@ namespace Registration_App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap powered_by {
+            get {
+                object obj = ResourceManager.GetObject("powered_by", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap stairs {
             get {
                 object obj = ResourceManager.GetObject("stairs", resourceCulture);

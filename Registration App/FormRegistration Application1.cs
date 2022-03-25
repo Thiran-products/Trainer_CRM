@@ -249,5 +249,10 @@ namespace Registration_App
         {
             Application.Exit();
         }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://thiransolution.com/");
+        }
     }
 }

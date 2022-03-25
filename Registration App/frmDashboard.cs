@@ -25,11 +25,12 @@ namespace Registration_App
 
         private void frmDashboard_Load(object sender, EventArgs e)
         {
-            lblSales.Text = "0";
-            lblStudents.Text = "0";
-            lblCourse.Text = "0";
-            lblExpenses.Text = "0";
-            lblLocation.Text = "0";
+            lbl_totalSales.Text = "0";
+            lbl_total_student.Text = "0";
+            lbl_course.Text = "0";
+            lbl_total_exp.Text = "0";
+            lbl_location.Text = "0";
+            lbl_Outstanding.Text = "0";
             getDashboardDetails();
         }
 
@@ -50,12 +51,12 @@ namespace Registration_App
                 SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
                 sda.Fill(dtDachboardDetails);
                 cnn.Close();
-                lblSales.Text = dtDachboardDetails.Tables[0].Rows.Count > 0 ? dtDachboardDetails.Tables[0].Rows[0]["sales"].ToString() : "0";
-                lblStudents.Text = dtDachboardDetails.Tables[1].Rows.Count > 0 ? dtDachboardDetails.Tables[1].Rows[0]["students"].ToString() : "0";
-                lblExpenses.Text = dtDachboardDetails.Tables[2].Rows.Count > 0 ? dtDachboardDetails.Tables[2].Rows[0]["expenses"].ToString() : "0";
-                lblLocation.Text = dtDachboardDetails.Tables[3].Rows.Count > 0 ? dtDachboardDetails.Tables[3].Rows[0]["locations"].ToString() : "0";
-                lblCourse.Text = dtDachboardDetails.Tables[4].Rows.Count > 0 ? dtDachboardDetails.Tables[4].Rows[0]["courses"].ToString() : "0";
-                label6.Text = dtDachboardDetails.Tables[5].Rows.Count > 0 ? dtDachboardDetails.Tables[5].Rows[0]["amountBalance"].ToString() : "0";
+                lbl_totalSales.Text = dtDachboardDetails.Tables[0].Rows.Count > 0 ? dtDachboardDetails.Tables[0].Rows[0]["sales"].ToString() : "0";
+                lbl_total_student.Text = dtDachboardDetails.Tables[1].Rows.Count > 0 ? dtDachboardDetails.Tables[1].Rows[0]["students"].ToString() : "0";
+                lbl_total_exp.Text = dtDachboardDetails.Tables[2].Rows.Count > 0 ? dtDachboardDetails.Tables[2].Rows[0]["expenses"].ToString() : "0";
+                lbl_location.Text = dtDachboardDetails.Tables[3].Rows.Count > 0 ? dtDachboardDetails.Tables[3].Rows[0]["locations"].ToString() : "0";
+                lbl_course.Text = dtDachboardDetails.Tables[4].Rows.Count > 0 ? dtDachboardDetails.Tables[4].Rows[0]["courses"].ToString() : "0";
+                lbl_Outstanding.Text = dtDachboardDetails.Tables[5].Rows.Count > 0 ? dtDachboardDetails.Tables[5].Rows[0]["amountBalance"].ToString() : "0";
             }
             catch(Exception ex)
             {

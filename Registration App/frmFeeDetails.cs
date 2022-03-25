@@ -579,5 +579,10 @@ namespace Registration_App
             bold.Dispose();
             print_items.Clear();
         }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
