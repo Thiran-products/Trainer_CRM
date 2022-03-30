@@ -27,6 +27,7 @@ namespace Registration_App
         #region reload form
         private void reloadForm()
         {
+            dtpFromDate.Text = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 01).ToString();
             cmbCourse.DropDownStyle = ComboBoxStyle.DropDownList;
             getCourseDetails();
             getRegistrationDetails();
@@ -63,9 +64,9 @@ namespace Registration_App
             DataTable dtStudentDetails = new DataTable();
             cnn.Open();
             cmd = cnn.CreateCommand();
-            cmd.CommandText = "select 0 as mstTrainingRegistrationId, 'Select Name' as name" +
+            cmd.CommandText = "select 0 as mstTrainingRegistrationId, 'Select Roll No' as name" +
                 "\nunion all\n " +
-                "select mstTrainingRegistrationId, name from mstTrainingRegistration where mstTrainingRegistrationId = case when @mstTrainingRegistrationId = 0 then mstTrainingRegistrationId else @mstTrainingRegistrationId end and isActive = 1; ";
+                "select mstTrainingRegistrationId, studentId from mstTrainingRegistration where mstTrainingRegistrationId = case when @mstTrainingRegistrationId = 0 then mstTrainingRegistrationId else @mstTrainingRegistrationId end and isActive = 1; ";
             cmd.Parameters.AddWithValue("@mstTrainingRegistrationId", 0);
             SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
             sda.Fill(dtStudentDetails);
@@ -93,7 +94,7 @@ namespace Registration_App
             DataTable dtRegistration = new DataTable();
             cnn.Open();
             cmd = cnn.CreateCommand();
-            cmd.CommandText = "select row_number() over(order by trnFeesDetailsId) as Sno,* from trnFeesDetails tfd " +
+            cmd.CommandText = "select row_number() over(order by trnFeesDetailsId) as Sno,*,date(tfd.createdDate) as billDate from trnFeesDetails tfd " +
                 "inner join mstCourse mc on tfd.courseId = mc.mstCourseId " +
                 "inner join mstTrainingRegistration mtr on tfd.userId = mtr.mstTrainingRegistrationId " +
                 "where " +
@@ -114,22 +115,21 @@ namespace Registration_App
             dgvFeeDetails.Columns[0].DataPropertyName = "trnFeesDetailsId";
             dgvFeeDetails.Columns[0].Visible = false;
             dgvFeeDetails.Columns[1].Width = 60;
-            dgvFeeDetails.Columns[1].HeaderText = "S No";
+            dgvFeeDetails.Columns[1].HeaderText = "Sno";
             dgvFeeDetails.Columns[1].DataPropertyName = "Sno";
             dgvFeeDetails.Columns[2].HeaderText = "Name";
             dgvFeeDetails.Columns[2].DataPropertyName = "name";
             dgvFeeDetails.Columns[3].Width = 50;
             dgvFeeDetails.Columns[3].HeaderText = "Course";
             dgvFeeDetails.Columns[3].DataPropertyName = "courseName";
-            dgvFeeDetails.Columns[4].HeaderText = "Fees";
-            dgvFeeDetails.Columns[4].DataPropertyName = "courseFees";
-            dgvFeeDetails.Columns[5].HeaderText = "DOB";
-            dgvFeeDetails.Columns[5].DataPropertyName = "DOB";
-            dgvFeeDetails.Columns[6].HeaderText = "Payment Type";
-            dgvFeeDetails.Columns[6].DataPropertyName = "paymentType";
-            dgvFeeDetails.Columns[6].Width = 240;
-            dgvFeeDetails.Columns[7].HeaderText = "Mobile#";
-            dgvFeeDetails.Columns[7].DataPropertyName = "mobileNo";
+            dgvFeeDetails.Columns[4].HeaderText = "Payment Type";
+            dgvFeeDetails.Columns[4].DataPropertyName = "paymentType";
+            dgvFeeDetails.Columns[5].HeaderText = "Fee Paid";
+            dgvFeeDetails.Columns[5].DataPropertyName = "amountPaid";
+            dgvFeeDetails.Columns[6].HeaderText = "Bill Date";
+            dgvFeeDetails.Columns[6].DataPropertyName = "billDate";
+            dgvFeeDetails.Columns[7].HeaderText = "Outstanding Fees";
+            dgvFeeDetails.Columns[7].DataPropertyName = "amountBalance";
 
             dgvFeeDetails.DataSource = dtRegistration;
         }

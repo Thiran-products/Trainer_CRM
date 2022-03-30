@@ -23,6 +23,8 @@ namespace Registration_App
         private static SQLiteCommand cmd;
         Boolean isFormLoad;
         string sPaymenType;
+        List<string> vString = new List<string>();
+        int balance = 0;
         #region Constructor
         public frmFeeDetails()
         {
@@ -117,48 +119,63 @@ namespace Registration_App
         #region Save fees details
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int balance = 0;
-            DataTable dtRegistration = new DataTable();
+            DataTable dtRegistrationsAlreadyPaid = new DataTable();
             cnn.Open();
             cmd = cnn.CreateCommand();
-            cmd.CommandText = "select * from mstCourse where mstCourseId = @mstCourseId; ";
-            cmd.Parameters.AddWithValue("@mstCourseId", cmbCourse.SelectedValue);
-            SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
-            sda.Fill(dtRegistration);
-            cnn.Close();
-            if(dtRegistration.Rows.Count > 0)
-            {
-                balance = Convert.ToInt32(dtRegistration.Rows[0]["courseFees"]) - Convert.ToInt32(txtAmount.Text);
-            }
-
-            DataTable dtRegistrations = new DataTable();
-            cnn.Open();
-            cmd = cnn.CreateCommand();
-            cmd.CommandText = "select max(trnFeesDetailsId),* from trnFeesDetails where userId = @mstTrainingRegistrationId and courseId = @courseId and isActive = 1;";
+            cmd.CommandText = "select * from trnFeesDetails where userId = @mstTrainingRegistrationId and courseId = @courseId and isActive = 1;";
             cmd.Parameters.AddWithValue("@mstTrainingRegistrationId", cmbUserName.SelectedValue);
             cmd.Parameters.AddWithValue("@courseId", cmbCourse.SelectedValue);
-            SQLiteDataAdapter sdap = new SQLiteDataAdapter(cmd);
-            sdap.Fill(dtRegistrations);
+            SQLiteDataAdapter sdapt = new SQLiteDataAdapter(cmd);
+            sdapt.Fill(dtRegistrationsAlreadyPaid);
             cnn.Close();
 
-            if(dtRegistrations.Rows.Count > 0)
+            if(dtRegistrationsAlreadyPaid.Rows.Count > 0)
             {
-                balance = Convert.ToInt32(dtRegistrations.Rows[0]["amountBalance"]) - Convert.ToInt32(txtAmount.Text);
+                DataTable dtRegistrations = new DataTable();
+                cnn.Open();
+                cmd = cnn.CreateCommand();
+                cmd.CommandText = "select max(trnFeesDetailsId),* from trnFeesDetails where userId = @mstTrainingRegistrationId and courseId = @courseId and isActive = 1;";
+                cmd.Parameters.AddWithValue("@mstTrainingRegistrationId", cmbUserName.SelectedValue);
+                cmd.Parameters.AddWithValue("@courseId", cmbCourse.SelectedValue);
+                SQLiteDataAdapter sdap = new SQLiteDataAdapter(cmd);
+                sdap.Fill(dtRegistrations);
+                cnn.Close();
+
+                if (dtRegistrations.Rows.Count > 0)
+                {
+                    balance = Convert.ToInt32(dtRegistrations.Rows[0]["amountBalance"] == DBNull.Value ? 0 : dtRegistrations.Rows[0]["amountBalance"]) - Convert.ToInt32(txtAmount.Text);
+                }
+            }
+            else
+            {
+                DataTable dtRegistration = new DataTable();
+                cnn.Open();
+                cmd = cnn.CreateCommand();
+                cmd.CommandText = "select * from mstCourse where mstCourseId = @mstCourseId; ";
+                cmd.Parameters.AddWithValue("@mstCourseId", cmbCourse.SelectedValue);
+                SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
+                sda.Fill(dtRegistration);
+                cnn.Close();
+                if (dtRegistration.Rows.Count > 0)
+                {
+                    balance = Convert.ToInt32(dtRegistration.Rows[0]["courseFees"] == DBNull.Value ? 0 : dtRegistration.Rows[0]["courseFees"]) - Convert.ToInt32(txtAmount.Text);
+                }
             }
 
             cnn.Open();
             cmd = cnn.CreateCommand();
             cmd.CommandText = "insert into trnFeesDetails(userId,courseId,paymentType,amountPaid,amountBalance,isCourseCompleted,createdDate) " +
-                "values(@userId, @courseId, @paymentType, @amountPaid, @amountBalance, @isCourseCompleted,datetime('now', 'localtime'))";
+                "values(@userId, @courseId, @paymentType, @amountPaid, @amountBalance, @isCourseCompleted,@receiptDate)";
             cmd.Parameters.AddWithValue("@userId", cmbUserName.SelectedValue);
             cmd.Parameters.AddWithValue("@courseId", cmbCourse.SelectedValue);
             sPaymenType = chkBank.Checked == true ? chkBank.Text.Trim() : "-";
             sPaymenType += "," + (chkCase.Checked == true ? chkCase.Text.Trim() : "-");
             sPaymenType += "," + (chkCheque.Checked == true ? chkCheque.Text.Trim() : "-");
             sPaymenType += "," + (chkOnline.Checked == true ? chkOnline.Text.Trim() : "-");
-            var vString = sPaymenType.Split(',').ToList();
+            vString = sPaymenType.Split(',').ToList();
             cmd.Parameters.AddWithValue("@paymentType", string.Join(",", vString.Where(a => !a.Contains("-")).ToList()));
             cmd.Parameters.AddWithValue("@amountPaid", txtAmount.Text);
+            cmd.Parameters.AddWithValue("@receiptDate", Convert.ToDateTime(dtp_date.Text).Date);
             cmd.Parameters.AddWithValue("@amountBalance", balance);
             cmd.Parameters.AddWithValue("@isCourseCompleted", chkCompleted.Checked == true ? 1 : 0);
             int iResult = cmd.ExecuteNonQuery();
@@ -167,7 +184,7 @@ namespace Registration_App
                 MessageBox.Show("Fees detail saved successfully!!!");
             }
             cnn.Close();
-
+            lblBalanceAmt.Text = balance.ToString();
 
             print_bill();
 
@@ -225,12 +242,13 @@ namespace Registration_App
             DataTable dtRegistration = new DataTable();
             cnn.Open();
             cmd = cnn.CreateCommand();
-            cmd.CommandText = "select row_number() over(order by trnFeesDetailsId) as Sno,* from trnFeesDetails tfd " +
+            cmd.CommandText = "select row_number() over(order by trnFeesDetailsId) as Sno,*,date(tfd.createdDate) as billDate from trnFeesDetails tfd " +
                 "inner join mstCourse mc on tfd.courseId = mc.mstCourseId " +
                 "inner join mstTrainingRegistration mtr on tfd.userId = mtr.mstTrainingRegistrationId " +
                 "where " +
                 "tfd.trnFeesDetailsId = case when @trnFeesDetailsId = 0 then tfd.trnFeesDetailsId else @trnFeesDetailsId end and " +
-                "tfd.isActive = 1; ";
+                "tfd.isActive = 1 " +
+                "and (strftime('%m', date(tfd.createdDate))='" + DateTime.Now.ToString("MM") + "' and strftime('%Y', date(tfd.createdDate))='" + DateTime.Now.ToString("yyyy") + "');";
             cmd.Parameters.AddWithValue("@trnFeesDetailsId", trnFeesDetailsId);
             SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
             sda.Fill(dtRegistration);
@@ -242,22 +260,21 @@ namespace Registration_App
             dgvFeeDetails.Columns[0].DataPropertyName = "trnFeesDetailsId";
             dgvFeeDetails.Columns[0].Visible = false;
             dgvFeeDetails.Columns[1].Width = 60;
-            dgvFeeDetails.Columns[1].HeaderText = "S No";
+            dgvFeeDetails.Columns[1].HeaderText = "Sno";
             dgvFeeDetails.Columns[1].DataPropertyName = "Sno";
             dgvFeeDetails.Columns[2].HeaderText = "Name";
             dgvFeeDetails.Columns[2].DataPropertyName = "name";
             dgvFeeDetails.Columns[3].Width = 50;
             dgvFeeDetails.Columns[3].HeaderText = "Course";
             dgvFeeDetails.Columns[3].DataPropertyName = "courseName";
-            dgvFeeDetails.Columns[4].HeaderText = "Fees";
-            dgvFeeDetails.Columns[4].DataPropertyName = "amountPaid";
-            dgvFeeDetails.Columns[5].HeaderText = "DOB";
-            dgvFeeDetails.Columns[5].DataPropertyName = "DOB";
-            dgvFeeDetails.Columns[6].HeaderText = "Address";
-            dgvFeeDetails.Columns[6].DataPropertyName = "postalAddress";
-            dgvFeeDetails.Columns[6].Width = 240;
-            dgvFeeDetails.Columns[7].HeaderText = "Mobile#";
-            dgvFeeDetails.Columns[7].DataPropertyName = "mobileNo";
+            dgvFeeDetails.Columns[4].HeaderText = "Payment Type";
+            dgvFeeDetails.Columns[4].DataPropertyName = "paymentType";
+            dgvFeeDetails.Columns[5].HeaderText = "Fee Paid";
+            dgvFeeDetails.Columns[5].DataPropertyName = "amountPaid";
+            dgvFeeDetails.Columns[6].HeaderText = "Bill Date";
+            dgvFeeDetails.Columns[6].DataPropertyName = "billDate";
+            dgvFeeDetails.Columns[7].HeaderText = "Outstanding Fees";
+            dgvFeeDetails.Columns[7].DataPropertyName = "amountBalance";
 
             dgvFeeDetails.DataSource = dtRegistration;
         }
@@ -349,7 +366,7 @@ namespace Registration_App
             cnn.Close();
             if (dtRegistration.Rows.Count > 0)
             {
-                balance = Convert.ToInt32(dtRegistration.Rows[0]["courseFees"]) - Convert.ToInt32(txtAmount.Text);
+                balance = Convert.ToInt32(dtRegistration.Rows[0]["courseFees"] == DBNull.Value ? 0 : dtRegistration.Rows[0]["courseFees"]) - Convert.ToInt32(txtAmount.Text);
             }
 
             cnn.Open();
@@ -479,7 +496,11 @@ namespace Registration_App
           
                 if (printDlg.ShowDialog() == DialogResult.OK)
                 {
-                printDoc.DefaultPageSettings.PaperSize = new PaperSize("thiran_biller", 290, 420);
+               // printDoc.DefaultPageSettings.PaperSize = new PaperSize("thiran_biller", 290, 420);
+                PaperSize ps = new PaperSize();
+                ps.RawKind = (int)PaperKind.A4;
+                printDoc.DefaultPageSettings.PaperSize = ps;
+                printDoc.DefaultPageSettings.Margins = new Margins(40, 40, 20, 20);
                 printDoc.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
                 printDoc.Print();
                 }
@@ -489,9 +510,9 @@ namespace Registration_App
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            /* Font calibri = new Font("calibri", 14, FontStyle.Regular, GraphicsUnit.Pixel);
-             e.Graphics.DrawString(richTextBox1.Text, calibri, Brushes.Black,
-             e.MarginBounds.Left, 0, new StringFormat());*/
+            
+           
+
             Dictionary<string, string> print_items = new Dictionary<string, string>();
 
             Graphics graphics = e.Graphics;
@@ -508,16 +529,67 @@ namespace Registration_App
             StringFormat stringFormat = new StringFormat();
             stringFormat.Alignment = StringAlignment.Far;
 
-            String billdate = DateTime.Now.ToString("dd/MM/yyyy");
+            //String billdate = DateTime.Now.ToString("dd/MM/yyyy");
+            String billdate = dtp_date.Text.Trim();
 
             String Business_name = "ThirdEye";
             String Business_tag = "CREATIVE TRAINERS & MENTORS";
-            String addressLine1 = "Address Line, Address Line, Address Line 1 ";
-            String addressLine2 = "Address Line , Address Line ,Address Line 2 ";
+            String addressLine1 = "Address Line, Address Line, Address Line , Address Line 1 ";
+          //  String addressLine2 = "Address Line , Address Line ,Address Line 2 ";
 
             //print header
+            graphics.DrawString(Business_name, title_font, Brushes.Black, 350, 40);  // y 20 +
+            graphics.DrawString(Business_tag, subtitle_font, Brushes.Black, 300, 80);
 
-            graphics.DrawString(Business_name, title_font, Brushes.Black, 70, 20);  // y 20 +
+            //graphics.DrawLine(Pens.Black, 10, 90, 800, 90);                       // y 100+
+            graphics.DrawString(addressLine1, small, Brushes.Black, 280, 100);
+           // graphics.DrawString(addressLine2, small, Brushes.Black, 35, 115);
+            graphics.DrawLine(Pens.Black, 20, 130, 800, 130);
+
+            graphics.DrawString("Bill No : " + "001", subtitle_font, Brushes.Black, 40, 140);
+            graphics.DrawString("Date : " + billdate, date_font, Brushes.Black, 780, 140, stringFormat);
+            graphics.DrawString("Name : " + label8.Text.Trim(), subtitle_font, Brushes.Black, 40, 160);
+            graphics.DrawString("Payment Type: " + string.Join(",", vString.Where(a => !a.Contains("-")).ToList()), subtitle_font, Brushes.Black, 40, 180);
+            graphics.DrawLine(Pens.Black, 20, 200, 800, 200);
+
+            graphics.DrawString("Courses", subtitle_font, Brushes.Black, 40, 210);
+            graphics.DrawString("Fees", subtitle_font, Brushes.Black, 780, 210, stringFormat);
+            graphics.DrawLine(Pens.Black, 20, 230, 800, 230);
+
+            if (cmbCourse.Text != String.Empty)
+                print_items.Add(cmbCourse.Text, txtfee.Text.Trim());
+
+            print_items.Add("--", "--");
+
+
+            List<string> K_val = print_items.Keys.ToList();
+            List<string> V_val = print_items.Values.ToList();
+            int y_ax = 240;
+            Console.WriteLine("Print Length - " + K_val.Count);
+            for (int i = 0; i < K_val.Count; i++)
+            {
+                graphics.DrawString(K_val[i], regular, Brushes.Black, 45, y_ax);
+                graphics.DrawString(V_val[i], regular, Brushes.Black, 780, y_ax, stringFormat);
+                y_ax = y_ax + 20;
+            }
+
+            //print footer
+            graphics.DrawLine(Pens.Black, 20, 300, 800, 300);
+            graphics.DrawString("Amount Paid", subtitle_font, Brushes.Black, 550, 310);
+            graphics.DrawString(txtAmount.Text.Trim(), subtitle_font, Brushes.Black, 780, 305, stringFormat);
+
+            graphics.DrawString("OutStanding Amount", subtitle_font, Brushes.Black, 550, 330);
+            graphics.DrawString(lblBalanceAmt.Text.Trim(), subtitle_font, Brushes.Black, 780, 330, stringFormat);
+
+
+            graphics.DrawLine(Pens.Black, 20, 350, 800, 350);
+            graphics.DrawLine(Pens.Black, 20, 355, 800, 355);
+            graphics.DrawString("------------       Thank You        ------------", small, Brushes.Black, 320, 365);
+            graphics.DrawString("Powerd by Thiransolution.com", xsmall, Brushes.Black, 360, 385);
+
+
+            /// Pos Bill Size 
+           /* graphics.DrawString(Business_name, title_font, Brushes.Black, 70, 20);  // y 20 +
             graphics.DrawString(Business_tag, subtitle_font, Brushes.Black, 20, 60);
 
             graphics.DrawLine(Pens.Black, 10, 90, 280, 90);                       // y 100+
@@ -528,7 +600,7 @@ namespace Registration_App
             graphics.DrawString("Bill No : " + "001", subtitle_font, Brushes.Black, 20, 140);
             graphics.DrawString("Date : " + billdate, date_font, Brushes.Black, 270, 140, stringFormat);
             graphics.DrawString("C.Name : " + label8.Text.Trim(), subtitle_font, Brushes.Black, 20, 160);
-            graphics.DrawString("Payment Type: " + sPaymenType, subtitle_font, Brushes.Black, 20, 180);
+            graphics.DrawString("Payment Type: " + string.Join(",", vString.Where(a => !a.Contains("-")).ToList()), subtitle_font, Brushes.Black, 20, 180);
             graphics.DrawLine(Pens.Black, 10, 200, 280, 200);
 
             graphics.DrawString("Courses", subtitle_font, Brushes.Black, 20, 210);
@@ -558,7 +630,7 @@ namespace Registration_App
             graphics.DrawString(txtAmount.Text.Trim(), subtitle_font, Brushes.Black, 270, 305, stringFormat);
             
             graphics.DrawString("OutStanding Amount", subtitle_font, Brushes.Black, 20, 330);
-            graphics.DrawString(txtfee.Text.Trim(), subtitle_font, Brushes.Black, 270, 330, stringFormat);
+            graphics.DrawString(lblBalanceAmt.Text.Trim(), subtitle_font, Brushes.Black, 270, 330, stringFormat);
 
 
             graphics.DrawLine(Pens.Black, 10, 350, 280, 350);
@@ -566,14 +638,7 @@ namespace Registration_App
             graphics.DrawString("------------       Thank You        ------------", small, Brushes.Black, 45, 365);
             graphics.DrawString("Powerd by Thiransolution.com", xsmall, Brushes.Black, 80, 385);
 
-
-            /*      for (int i = 0; i < itemList.Count; i++)
-                  {
-                      graphics.DrawString(itemList[i].ToString(), regular, Brushes.Black, 20, 150 + i * 20);
-                  }*/
-
-
-            //...
+*/
 
             regular.Dispose();
             bold.Dispose();
@@ -583,6 +648,27 @@ namespace Registration_App
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void formClear()
+        {
+            dtp_date.Text = DateTime.Now.Date.ToString();
+            cmbUserName.SelectedValue = 0;
+            label8.Text = "";
+            cmbCourse.SelectedValue = 0;
+            txtfee.Text = "";
+            txtDuration.Text = "";
+            chkCase.Checked = false;
+            chkBank.Checked = false;
+            chkCheque.Checked = false;
+            chkOnline.Checked = false;
+            txtAmount.Text = "";
+            chkCompleted.Checked = false;
+            lblFeeDetailId.Text = "";
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            formClear();
         }
     }
 }

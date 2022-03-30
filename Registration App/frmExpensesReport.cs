@@ -28,6 +28,7 @@ namespace Registration_App
         #region Form load
         private void frmExpensesReport_Load(object sender, EventArgs e)
         {
+            dtpFromDate.Text = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 01).ToString();
             getExpensesDetails(0);
             getCategory();
         }

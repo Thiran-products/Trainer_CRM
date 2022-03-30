@@ -165,7 +165,8 @@ namespace Registration_App
             cmd = cnn.CreateCommand();
             cmd.CommandText = "select row_number() over(order by te.mstCategoryId) as Sno,* from trnExpenses te " +
                 "inner join mstCategory mc on te.mstCategoryId = mc.mstCategoryId " +
-                "where te.trnExpensesId = case when @trnExpensesId = 0 then te.trnExpensesId else @trnExpensesId end and te.isActive = 1; ";
+                "where te.trnExpensesId = case when @trnExpensesId = 0 then te.trnExpensesId else @trnExpensesId end and te.isActive = 1 " +
+                "and (strftime('%m', date(te.createdDate))='" + DateTime.Now.ToString("MM") + "' and strftime('%Y', date(te.createdDate))='" + DateTime.Now.ToString("yyyy") + "');";
             cmd.Parameters.AddWithValue("@trnExpensesId", trnExpensesId);
             SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
             sda.Fill(dtRegistration);
@@ -197,7 +198,7 @@ namespace Registration_App
         {
             try
             {
-                if(e.RowIndex != -1)
+                if (e.RowIndex != -1)
                 {
                     getCategory();
                     btnSave.Enabled = false;
@@ -241,6 +242,14 @@ namespace Registration_App
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lblExpensesId.Text = "";
+            txtAmount.Text = "";
+            txtDescription.Text = "";
+            cmbCategory.SelectedValue = 0;
         }
     }
 }

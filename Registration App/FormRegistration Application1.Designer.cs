@@ -159,7 +159,7 @@ namespace Registration_App
             // courseToolStripMenuItem
             // 
             this.courseToolStripMenuItem.Name = "courseToolStripMenuItem";
-            this.courseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.courseToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.courseToolStripMenuItem.Text = "Users and Roles";
             this.courseToolStripMenuItem.Click += new System.EventHandler(this.courseToolStripMenuItem_Click);
             // 
@@ -170,48 +170,48 @@ namespace Registration_App
             this.expensesCategoryToolStripMenuItem,
             this.serviceLocationToolStripMenuItem});
             this.mastersToolStripMenuItem.Name = "mastersToolStripMenuItem";
-            this.mastersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mastersToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.mastersToolStripMenuItem.Text = "Masters";
             // 
             // courseToolStripMenuItem1
             // 
             this.courseToolStripMenuItem1.Name = "courseToolStripMenuItem1";
-            this.courseToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.courseToolStripMenuItem1.Size = new System.Drawing.Size(173, 22);
             this.courseToolStripMenuItem1.Text = "Courses";
             this.courseToolStripMenuItem1.Click += new System.EventHandler(this.courseToolStripMenuItem1_Click);
             // 
             // expensesCategoryToolStripMenuItem
             // 
             this.expensesCategoryToolStripMenuItem.Name = "expensesCategoryToolStripMenuItem";
-            this.expensesCategoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expensesCategoryToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.expensesCategoryToolStripMenuItem.Text = "Expenses Category";
             this.expensesCategoryToolStripMenuItem.Click += new System.EventHandler(this.expensesCategoryToolStripMenuItem_Click);
             // 
             // serviceLocationToolStripMenuItem
             // 
             this.serviceLocationToolStripMenuItem.Name = "serviceLocationToolStripMenuItem";
-            this.serviceLocationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.serviceLocationToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.serviceLocationToolStripMenuItem.Text = "Service Location";
             this.serviceLocationToolStripMenuItem.Click += new System.EventHandler(this.serviceLocationToolStripMenuItem_Click);
             // 
             // backupToolStripMenuItem
             // 
             this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.backupToolStripMenuItem.Text = "Backup ";
             this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
             // 
             // restoreToolStripMenuItem
             // 
             this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
-            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.restoreToolStripMenuItem.Text = "Restore";
             this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
             // 
             // licenseInfoToolStripMenuItem
             // 
             this.licenseInfoToolStripMenuItem.Name = "licenseInfoToolStripMenuItem";
-            this.licenseInfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.licenseInfoToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.licenseInfoToolStripMenuItem.Text = "License Info";
             // 
             // toolStripMenuItem1
@@ -231,28 +231,28 @@ namespace Registration_App
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(172, 22);
             this.toolStripMenuItem2.Text = "Students";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(172, 22);
             this.toolStripMenuItem3.Text = "Attendance";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // feeDetailsToolStripMenuItem
             // 
             this.feeDetailsToolStripMenuItem.Name = "feeDetailsToolStripMenuItem";
-            this.feeDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.feeDetailsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.feeDetailsToolStripMenuItem.Text = "Transaction Details";
             this.feeDetailsToolStripMenuItem.Click += new System.EventHandler(this.feeDetailsToolStripMenuItem_Click);
             // 
             // expensesToolStripMenuItem
             // 
             this.expensesToolStripMenuItem.Name = "expensesToolStripMenuItem";
-            this.expensesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expensesToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.expensesToolStripMenuItem.Text = "Expenses";
             this.expensesToolStripMenuItem.Click += new System.EventHandler(this.expensesToolStripMenuItem_Click);
             // 
@@ -263,6 +263,7 @@ namespace Registration_App
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(105, 45);
             this.toolStripMenuItem5.Text = "Logout";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // contextMenuStrip1
             // 
@@ -338,7 +339,7 @@ namespace Registration_App
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(54, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 16);
+            this.label1.Size = new System.Drawing.Size(85, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "User Name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -399,7 +400,7 @@ namespace Registration_App
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmRegistrationApp";
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

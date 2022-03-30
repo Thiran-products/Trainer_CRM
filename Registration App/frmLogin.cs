@@ -38,8 +38,17 @@ namespace Registration_App
             }
             else
             {
+                try
+                {
                 string vMacDetails = GetMacAddress().ToString();
                 checkMacAddressDetails(vMacDetails);
+                }
+                catch 
+                {
+
+                    MessageBox.Show("Please Check Your Internet Connection !");
+                }
+               
             }
         }
 
@@ -47,7 +56,8 @@ namespace Registration_App
         public static PhysicalAddress GetMacAddress()
         {
             var myInterfaceAddress = NetworkInterface.GetAllNetworkInterfaces()
-                .Where(n => n.OperationalStatus == OperationalStatus.Up && n.NetworkInterfaceType != NetworkInterfaceType.Loopback)
+                //.Where(n => n.OperationalStatus == OperationalStatus.Up && n.NetworkInterfaceType != NetworkInterfaceType.Loopback)
+                .Where(n =>  n.NetworkInterfaceType != NetworkInterfaceType.Loopback)
                 .OrderByDescending(n => n.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
                 .Select(n => n.GetPhysicalAddress())
                 .FirstOrDefault();

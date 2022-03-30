@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCourse = new System.Windows.Forms.TextBox();
@@ -43,6 +43,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDuration = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCourseList)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +71,7 @@
             // txtCourse
             // 
             this.txtCourse.Location = new System.Drawing.Point(193, 203);
-            this.txtCourse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCourse.Margin = new System.Windows.Forms.Padding(4);
             this.txtCourse.Name = "txtCourse";
             this.txtCourse.Size = new System.Drawing.Size(223, 22);
             this.txtCourse.TabIndex = 1;
@@ -78,7 +79,7 @@
             // txtFees
             // 
             this.txtFees.Location = new System.Drawing.Point(193, 266);
-            this.txtFees.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFees.Margin = new System.Windows.Forms.Padding(4);
             this.txtFees.Name = "txtFees";
             this.txtFees.Size = new System.Drawing.Size(223, 22);
             this.txtFees.TabIndex = 2;
@@ -90,7 +91,7 @@
             this.btnSaveCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveCourse.ForeColor = System.Drawing.Color.White;
             this.btnSaveCourse.Location = new System.Drawing.Point(59, 382);
-            this.btnSaveCourse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSaveCourse.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveCourse.Name = "btnSaveCourse";
             this.btnSaveCourse.Size = new System.Drawing.Size(437, 39);
             this.btnSaveCourse.TabIndex = 3;
@@ -105,7 +106,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(59, 428);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(221, 39);
             this.button1.TabIndex = 4;
@@ -120,7 +121,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(288, 428);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(208, 39);
             this.button2.TabIndex = 5;
@@ -133,18 +134,18 @@
             this.dgvCourseList.AllowUserToAddRows = false;
             this.dgvCourseList.AllowUserToDeleteRows = false;
             this.dgvCourseList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCourseList.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCourseList.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCourseList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCourseList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvCourseList.Location = new System.Drawing.Point(597, 0);
-            this.dgvCourseList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvCourseList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCourseList.Name = "dgvCourseList";
             this.dgvCourseList.RowHeadersWidth = 51;
             this.dgvCourseList.ShowEditingIcon = false;
@@ -166,6 +167,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label3);
@@ -180,7 +182,7 @@
             this.panel1.Controls.Add(this.btnSaveCourse);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(597, 750);
             this.panel1.TabIndex = 8;
@@ -200,7 +202,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.panel2.Location = new System.Drawing.Point(-3, 114);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(299, 12);
             this.panel2.TabIndex = 24;
@@ -218,10 +220,25 @@
             // txtDuration
             // 
             this.txtDuration.Location = new System.Drawing.Point(193, 327);
-            this.txtDuration.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDuration.Margin = new System.Windows.Forms.Padding(4);
             this.txtDuration.Name = "txtDuration";
             this.txtDuration.Size = new System.Drawing.Size(223, 22);
             this.txtDuration.TabIndex = 3;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(59, 475);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(437, 39);
+            this.button3.TabIndex = 26;
+            this.button3.Text = "Clear";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // frmCourseMaster
             // 
@@ -231,7 +248,7 @@
             this.Controls.Add(this.dgvCourseList);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCourseMaster";
             this.Text = "Course Master";
             this.Load += new System.EventHandler(this.frmCourseMaster_Load);
@@ -258,5 +275,6 @@
         private System.Windows.Forms.TextBox txtDuration;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button3;
     }
 }

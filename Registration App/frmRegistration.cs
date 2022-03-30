@@ -154,7 +154,15 @@ namespace Registration_App
             DataTable dtRegistration = new DataTable();
             cnn.Open();
             cmd = cnn.CreateCommand();
-            cmd.CommandText = "select row_number() over(order by mstTrainingRegistrationId) as Sno,* from mstTrainingRegistration where mstTrainingRegistrationId = case when @mstTrainingRegistrationId = 0 then mstTrainingRegistrationId else @mstTrainingRegistrationId end and isActive = 1;";
+            cmd.CommandText = "select row_number() over(order by a.mstTrainingRegistrationId) as Sno,*,date(a.createdDate) as joinDate" +
+                " from mstTrainingRegistration as a " +
+                "where a.mstTrainingRegistrationId = case when @mstTrainingRegistrationId = 0 then a.mstTrainingRegistrationId else @mstTrainingRegistrationId end and a.isActive = 1" +
+                " and(strftime('%m', date(a.createdDate)) = '" + DateTime.Now.ToString("MM") + "' and strftime('%Y', date(a.createdDate)) = '" + DateTime.Now.ToString("yyyy") + "'); ";
+            //cmd.CommandText = "select row_number() over(order by a.mstTrainingRegistrationId) as Sno,*,date(a.createdDate) as joinDate,case when b.isCourseCompleted = 1 then 'Completed' else 'On Going' end as courseCompleted,max(b.trnfeesdetailsId)" +
+            //    " from mstTrainingRegistration as a " +
+            //    "inner join trnFeesDetails as b on a.mstTrainingRegistrationId = b.userId " +
+            //    "where a.mstTrainingRegistrationId = case when @mstTrainingRegistrationId = 0 then a.mstTrainingRegistrationId else @mstTrainingRegistrationId end and a.isActive = 1 and b.isActive = 1" +
+            //    " and(strftime('%m', date(a.createdDate)) = '" + DateTime.Now.ToString("MM") + "' and strftime('%Y', date(a.createdDate)) = '" + DateTime.Now.ToString("yyyy") + "'); ";
             cmd.Parameters.AddWithValue("@mstTrainingRegistrationId", mstRegistrationId);
             SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
             sda.Fill(dtRegistration);
@@ -162,28 +170,28 @@ namespace Registration_App
             cnn.Close();
             dgvRegistrationReport.DataSource = null;
             dgvRegistrationReport.AutoGenerateColumns = false;
-            dgvRegistrationReport.ColumnCount = 9;
+            dgvRegistrationReport.ColumnCount = 8;
             dgvRegistrationReport.Columns[0].HeaderText = "mstTrainingRegistrationId";
             dgvRegistrationReport.Columns[0].DataPropertyName = "mstTrainingRegistrationId";
             dgvRegistrationReport.Columns[0].Visible = false;
             dgvRegistrationReport.Columns[1].Width = 50;
-            dgvRegistrationReport.Columns[1].HeaderText = "S No";
+            dgvRegistrationReport.Columns[1].HeaderText = "Sno";
             dgvRegistrationReport.Columns[1].DataPropertyName = "Sno";
-            dgvRegistrationReport.Columns[2].HeaderText = "Name";
-            dgvRegistrationReport.Columns[2].DataPropertyName = "name";
+            dgvRegistrationReport.Columns[2].HeaderText = "Roll No";
+            dgvRegistrationReport.Columns[2].DataPropertyName = "studentId";
             dgvRegistrationReport.Columns[3].Width = 50;
-            dgvRegistrationReport.Columns[3].HeaderText = "Age";
-            dgvRegistrationReport.Columns[3].DataPropertyName = "age";
-            dgvRegistrationReport.Columns[4].HeaderText = "E-Mail";
-            dgvRegistrationReport.Columns[4].DataPropertyName = "emailId";
-            dgvRegistrationReport.Columns[5].HeaderText = "Course Name";
-            dgvRegistrationReport.Columns[5].DataPropertyName = "courseName";
-            dgvRegistrationReport.Columns[6].HeaderText = "Date Of Birth";
-            dgvRegistrationReport.Columns[6].DataPropertyName = "DOB";
-            dgvRegistrationReport.Columns[7].HeaderText = "Address";
-            dgvRegistrationReport.Columns[7].DataPropertyName = "postalAddress";
-            dgvRegistrationReport.Columns[8].HeaderText = "Mobile#";
-            dgvRegistrationReport.Columns[8].DataPropertyName = "mobileNo";
+            dgvRegistrationReport.Columns[3].HeaderText = "Name";
+            dgvRegistrationReport.Columns[3].DataPropertyName = "name";
+            dgvRegistrationReport.Columns[4].HeaderText = "Course";
+            dgvRegistrationReport.Columns[4].DataPropertyName = "courseName";
+            dgvRegistrationReport.Columns[5].HeaderText = "Mobile No";
+            dgvRegistrationReport.Columns[5].DataPropertyName = "mobileNo";
+            dgvRegistrationReport.Columns[6].HeaderText = "Location";
+            dgvRegistrationReport.Columns[6].DataPropertyName = "locationName";
+            dgvRegistrationReport.Columns[7].HeaderText = "Date Of Join";
+            dgvRegistrationReport.Columns[7].DataPropertyName = "joinDate";
+            //dgvRegistrationReport.Columns[8].HeaderText = "Status";
+            //dgvRegistrationReport.Columns[8].DataPropertyName = "courseCompleted";
 
             dgvRegistrationReport.DataSource = dtRegistration;
         }
@@ -362,5 +370,24 @@ namespace Registration_App
             }
         }
         #endregion
+
+        private void clearForm()
+        {
+            txtName.Text = "";
+            lblRegistrationId.Text = "";
+            cmbLocation.SelectedValue = 0;
+            cbCourseType.SelectedValue = 0;
+            dtpDOB.Text = DateTime.Now.Date.ToString();
+            txtAge.Text = "";
+            txtAddress.Text = "";
+            txtMobileNo.Text = "";
+            txtWPNo.Text = "";
+            txtEmailId.Text = "";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            clearForm();
+        }
     }
 }

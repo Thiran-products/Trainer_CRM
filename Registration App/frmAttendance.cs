@@ -130,7 +130,8 @@ namespace Registration_App
             cmd.CommandText = "select row_number() over(order by ta.trnAttendanceId) as Sno,* from trnAttendance ta " +
                 "inner join mstTrainingRegistration mr on ta.userId = mr.mstTrainingRegistrationId " +
                 "inner join mstCourse mc on ta.courseId = mc.mstCourseId " +
-                "where ta.trnAttendanceId = case when @trnAttendanceId = 0 then ta.trnAttendanceId else @trnAttendanceId end and ta.isActive = 1";
+                "where ta.trnAttendanceId = case when @trnAttendanceId = 0 then ta.trnAttendanceId else @trnAttendanceId end and ta.isActive = 1 " +
+                "and (strftime('%m', date(ta.createdDate))='" + DateTime.Now.ToString("MM") + "' and strftime('%Y', date(ta.createdDate))='" + DateTime.Now.ToString("yyyy") + "');";
             cmd.Parameters.AddWithValue("@trnAttendanceId", trnAttendanceDetailsId);
             SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
             sda.Fill(dtRegistration);
@@ -263,7 +264,7 @@ namespace Registration_App
                     if (dtRegistration.Rows.Count > 0)
                     {
                         cmbCourse.SelectedValue = Convert.ToInt32(dtRegistration.Rows[0]["courseTypeId"]);
-                        label8.Text = dtRegistration.Rows[0]["courseTypeId"].ToString();
+                        label8.Text = dtRegistration.Rows[0]["name"].ToString();
                     }
                     else
                     {
@@ -282,6 +283,14 @@ namespace Registration_App
             {
                 throw ex;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lblAttendanceId.Text = "";
+            cmbCourse.SelectedValue = 0;
+            cmbUserName.SelectedValue = 0;
+            label8.Text = "";
         }
     }
 }

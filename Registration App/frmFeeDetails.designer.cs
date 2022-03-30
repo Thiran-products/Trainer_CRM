@@ -31,6 +31,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblBalanceAmt = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dtp_date = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,10 +65,6 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.dtp_date = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFeeDetails)).BeginInit();
@@ -71,6 +73,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.lblBalanceAmt);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.dtp_date);
@@ -100,6 +104,65 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(471, 640);
             this.panel1.TabIndex = 0;
+            // 
+            // lblBalanceAmt
+            // 
+            this.lblBalanceAmt.AutoSize = true;
+            this.lblBalanceAmt.Location = new System.Drawing.Point(153, 412);
+            this.lblBalanceAmt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBalanceAmt.Name = "lblBalanceAmt";
+            this.lblBalanceAmt.Size = new System.Drawing.Size(0, 13);
+            this.lblBalanceAmt.TabIndex = 37;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(302, 553);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(108, 41);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(74, 412);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(78, 13);
+            this.label11.TabIndex = 35;
+            this.label11.Text = "Balance Fees :";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(383, 251);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(42, 13);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Months";
+            // 
+            // dtp_date
+            // 
+            this.dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_date.Location = new System.Drawing.Point(317, 107);
+            this.dtp_date.Name = "dtp_date";
+            this.dtp_date.Size = new System.Drawing.Size(93, 20);
+            this.dtp_date.TabIndex = 33;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(235, 111);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(76, 13);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "Recepit Date :";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
             // 
@@ -197,9 +260,9 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(237, 553);
+            this.btnDelete.Location = new System.Drawing.Point(181, 553);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(175, 41);
+            this.btnDelete.Size = new System.Drawing.Size(111, 41);
             this.btnDelete.TabIndex = 12;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -213,7 +276,7 @@
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
             this.btnUpdate.Location = new System.Drawing.Point(61, 553);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(176, 41);
+            this.btnUpdate.Size = new System.Drawing.Size(110, 41);
             this.btnUpdate.TabIndex = 11;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -227,7 +290,7 @@
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(61, 506);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(352, 41);
+            this.btnSave.Size = new System.Drawing.Size(349, 41);
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Add";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -259,7 +322,7 @@
             // 
             this.chkCheque.AutoSize = true;
             this.chkCheque.Location = new System.Drawing.Point(94, 41);
-            this.chkCheque.Margin = new System.Windows.Forms.Padding(2);
+            this.chkCheque.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkCheque.Name = "chkCheque";
             this.chkCheque.Size = new System.Drawing.Size(62, 17);
             this.chkCheque.TabIndex = 33;
@@ -271,7 +334,7 @@
             // 
             this.chkBank.AutoSize = true;
             this.chkBank.Location = new System.Drawing.Point(298, 41);
-            this.chkBank.Margin = new System.Windows.Forms.Padding(2);
+            this.chkBank.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkBank.Name = "chkBank";
             this.chkBank.Size = new System.Drawing.Size(50, 17);
             this.chkBank.TabIndex = 32;
@@ -283,7 +346,7 @@
             // 
             this.chkOnline.AutoSize = true;
             this.chkOnline.Location = new System.Drawing.Point(180, 41);
-            this.chkOnline.Margin = new System.Windows.Forms.Padding(2);
+            this.chkOnline.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkOnline.Name = "chkOnline";
             this.chkOnline.Size = new System.Drawing.Size(97, 17);
             this.chkOnline.TabIndex = 31;
@@ -295,7 +358,7 @@
             // 
             this.chkCase.AutoSize = true;
             this.chkCase.Location = new System.Drawing.Point(21, 41);
-            this.chkCase.Margin = new System.Windows.Forms.Padding(2);
+            this.chkCase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkCase.Name = "chkCase";
             this.chkCase.Size = new System.Drawing.Size(49, 17);
             this.chkCase.TabIndex = 30;
@@ -392,48 +455,12 @@
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(476, 61);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(298, 25);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             this.richTextBox1.Visible = false;
-            // 
-            // dtp_date
-            // 
-            this.dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_date.Location = new System.Drawing.Point(317, 107);
-            this.dtp_date.Name = "dtp_date";
-            this.dtp_date.Size = new System.Drawing.Size(93, 20);
-            this.dtp_date.TabIndex = 33;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(235, 111);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(76, 13);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "Recepit Date :";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(383, 251);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(42, 13);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Months";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(74, 412);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 13);
-            this.label11.TabIndex = 35;
-            this.label11.Text = "Balance Fees :";
             // 
             // frmFeeDetails
             // 
@@ -470,7 +497,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtDuration;
         private System.Windows.Forms.TextBox txtfee;
         private System.Windows.Forms.ComboBox cmbCourse;
@@ -493,5 +519,8 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblBalanceAmt;
     }
 }

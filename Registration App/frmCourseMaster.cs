@@ -195,5 +195,13 @@ namespace Registration_App
                 reload();
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            txtCourse.Text = "";
+            txtDuration.Text = "";
+            txtFees.Text = "";
+            lblCourseId.Text = "";
+        }
     }
 }

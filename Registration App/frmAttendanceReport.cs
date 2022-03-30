@@ -28,6 +28,7 @@ namespace Registration_App
         #region reload form
         private void reloadForm()
         {
+            dtpFromDate.Text = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 01).ToString();
             cmbCourse.DropDownStyle = ComboBoxStyle.DropDownList;
             getCourseDetails();
             getRegistrationDetails();
@@ -64,9 +65,9 @@ namespace Registration_App
             DataTable dtStudentDetails = new DataTable();
             cnn.Open();
             cmd = cnn.CreateCommand();
-            cmd.CommandText = "select 0 as mstTrainingRegistrationId, 'Select Name' as name" +
+            cmd.CommandText = "select 0 as mstTrainingRegistrationId, 'Select Roll No' as name" +
                 "\nunion all\n " +
-                "select mstTrainingRegistrationId, name from mstTrainingRegistration where mstTrainingRegistrationId = case when @mstTrainingRegistrationId = 0 then mstTrainingRegistrationId else @mstTrainingRegistrationId end and isActive = 1; ";
+                "select mstTrainingRegistrationId, studentId from mstTrainingRegistration where mstTrainingRegistrationId = case when @mstTrainingRegistrationId = 0 then mstTrainingRegistrationId else @mstTrainingRegistrationId end and isActive = 1; ";
             cmd.Parameters.AddWithValue("@mstTrainingRegistrationId", 0);
             SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
             sda.Fill(dtStudentDetails);

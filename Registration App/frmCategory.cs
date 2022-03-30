@@ -186,5 +186,11 @@ namespace Registration_App
             }
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lblCategoryId.Text = "";
+            txtCategory.Text = "";
+        }
     }
 }

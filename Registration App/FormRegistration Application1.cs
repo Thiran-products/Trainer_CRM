@@ -254,5 +254,10 @@ namespace Registration_App
         {
             System.Diagnostics.Process.Start("http://thiransolution.com/");
         }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

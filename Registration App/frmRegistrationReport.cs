@@ -28,11 +28,12 @@ namespace Registration_App
         #region reload form
         private void reloadForm()
         {
+            dtpFromDate.Text = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 01).ToString();
             cmbCourse.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbLocation.DropDownStyle = ComboBoxStyle.DropDownList;
+            getLocationDetails();
             getCourseDetails();
             getRegistrationDetails();
-            getLocationDetails();
         }
         #endregion
 
@@ -54,7 +55,7 @@ namespace Registration_App
                 cmbCourse.DataSource = dtRegistration;
                 cmbCourse.DisplayMember = "courseName";
                 cmbCourse.ValueMember = "mstCourseId";
-                cmbCourse.SelectedIndex = 0;
+                cmbCourse.SelectedValue = 0;
             }
         }
         #endregion
@@ -76,7 +77,7 @@ namespace Registration_App
                 cmbLocation.DataSource = dtRegistration;
                 cmbLocation.DisplayMember = "locationName";
                 cmbLocation.ValueMember = "locationId";
-                cmbLocation.SelectedIndex = 0;
+                cmbLocation.SelectedValue = 0;
             }
         }
         #endregion
