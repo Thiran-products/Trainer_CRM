@@ -510,8 +510,36 @@ namespace Registration_App
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            
-           
+            string sBillNo = string.Empty;
+            DataTable dtRegistration = new DataTable();
+            cnn.Open();
+            cmd = cnn.CreateCommand();
+            cmd.CommandText = "select * from trnFeesDetails order by trnFeesDetailsId desc;";
+            SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
+            sda.Fill(dtRegistration);
+            cnn.Close();
+
+            if (dtRegistration.Rows.Count > 0)
+            {
+                if ((Convert.ToInt32(dtRegistration.Rows[0]["trnFeesDetailsId"]) + 1).ToString().Length == 1)
+                {
+                    sBillNo += "00" + (Convert.ToInt32(dtRegistration.Rows[0]["trnFeesDetailsId"]) + 1).ToString();
+                }
+                else if ((Convert.ToInt32(dtRegistration.Rows[0]["trnFeesDetailsId"]) + 1).ToString().Length == 2)
+                {
+                    sBillNo += "0" + (Convert.ToInt32(dtRegistration.Rows[0]["trnFeesDetailsId"]) + 1).ToString();
+                }
+                else
+                {
+                    sBillNo += (Convert.ToInt32(dtRegistration.Rows[0]["trnFeesDetailsId"]) + 1).ToString();
+                }
+            }
+            else
+            {
+                sBillNo += "001";
+            }
+
+
 
             Dictionary<string, string> print_items = new Dictionary<string, string>();
 
@@ -546,7 +574,7 @@ namespace Registration_App
            // graphics.DrawString(addressLine2, small, Brushes.Black, 35, 115);
             graphics.DrawLine(Pens.Black, 20, 130, 800, 130);
 
-            graphics.DrawString("Bill No : " + "001", subtitle_font, Brushes.Black, 40, 140);
+            graphics.DrawString("Bill No : " + sBillNo, subtitle_font, Brushes.Black, 40, 140);
             graphics.DrawString("Date : " + billdate, date_font, Brushes.Black, 780, 140, stringFormat);
             graphics.DrawString("Name : " + label8.Text.Trim(), subtitle_font, Brushes.Black, 40, 160);
             graphics.DrawString("Payment Type: " + string.Join(",", vString.Where(a => !a.Contains("-")).ToList()), subtitle_font, Brushes.Black, 40, 180);

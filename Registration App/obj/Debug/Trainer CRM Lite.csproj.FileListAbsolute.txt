@@ -101,4 +101,23 @@ C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration A
 C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\bin\Debug\Registration App.application
 C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration App.exe.manifest
 C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Registration App.application
-C:\Users\Kalpssoft\Documents\Navi\Thiran CRM Lite\Thiran CRM Lite\Registration App\obj\Debug\Trainer CRM Lite.csproj.SuggestedBindingRedirects.cache
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmRegistrationApp.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmAttendance.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmAttendanceReport.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmCategory.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmCourseMaster.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmDashboard.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmExpenses.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmExpensesReport.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmFeeDetails.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmFeeDetailsReport.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmLicense.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmLocation.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmLogin.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmRegistration.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.frmRegistrationReport.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration_App.Properties.Resources.resources
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Trainer CRM Lite.csproj.GenerateResource.cache
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Trainer CRM Lite.csproj.CoreCompileInputs.cache
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration App.exe
+E:\Balaji\Thiran CRM Lite\Thiran CRM Lite Latest\Registration App\obj\Debug\Registration App.pdb

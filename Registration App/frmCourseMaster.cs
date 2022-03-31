@@ -52,10 +52,10 @@ namespace Registration_App
             {
                 cnn.Open();
                 cmd = cnn.CreateCommand();
-                cmd.CommandText = "insert into mstCourse(courseName,courseFees,startDate,endDate) values (@courseName,@courseFees,@duration);";
+                cmd.CommandText = "insert into mstCourse(courseName,courseFees,courseDuration) values (@courseName,@courseFees,@duration);";
                 cmd.Parameters.AddWithValue("@courseName", txtCourse.Text.Trim());
                 cmd.Parameters.AddWithValue("@courseFees", txtFees.Text.Trim());
-                cmd.Parameters.AddWithValue("@startDate", txtDuration.Text.Trim());
+                cmd.Parameters.AddWithValue("@duration", txtDuration.Text.Trim());
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Course added successfully!!!");
                 cnn.Close();

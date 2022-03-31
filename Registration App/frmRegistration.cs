@@ -73,78 +73,78 @@ namespace Registration_App
         #region Add registration
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            Regex re = new Regex("^[0-9]{9}");
-            if (re.IsMatch(txtMobileNo.Text.Trim()) == false || txtMobileNo.Text.Trim().Length < 10)
-            {
-                MessageBox.Show("Please enter valid mobile number");
-                txtMobileNo.Focus();
-            }
-            else if (re.IsMatch(txtWPNo.Text.Trim()) == false || txtMobileNo.Text.Trim().Length < 10)
-            {
-                MessageBox.Show("Please enter valid what's app number");
-                txtWPNo.Focus();
-            }
-            else if (ValidateEmailId(txtEmailId.Text.Trim()) == false)
-            {
-                MessageBox.Show("Please enter valid email address");
-                txtEmailId.Focus();
-            }
-            else
-            {
-                DataTable dtRegistration = new DataTable();
-                cnn.Open();
-                cmd = cnn.CreateCommand();
-                cmd.CommandText = "select row_number() over(order by mstTrainingRegistrationId) as Sno,* from mstTrainingRegistration order by mstTrainingRegistrationId desc;";
-                SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
-                sda.Fill(dtRegistration);
-                cnn.Close();
+            //Regex re = new Regex("^[0-9]{9}");
+            //if (re.IsMatch(txtMobileNo.Text.Trim()) == false || txtMobileNo.Text.Trim().Length < 10)
+            //{
+            //    MessageBox.Show("Please enter valid mobile number");
+            //    txtMobileNo.Focus();
+            //}
+            //else if (re.IsMatch(txtWPNo.Text.Trim()) == false || txtMobileNo.Text.Trim().Length < 10)
+            //{
+            //    MessageBox.Show("Please enter valid what's app number");
+            //    txtWPNo.Focus();
+            //}
+            //else if (ValidateEmailId(txtEmailId.Text.Trim()) == false)
+            //{
+            //    MessageBox.Show("Please enter valid email address");
+            //    txtEmailId.Focus();
+            //}
+            //else
+            //{
+            DataTable dtRegistration = new DataTable();
+            cnn.Open();
+            cmd = cnn.CreateCommand();
+            cmd.CommandText = "select row_number() over(order by mstTrainingRegistrationId) as Sno,* from mstTrainingRegistration order by mstTrainingRegistrationId desc;";
+            SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
+            sda.Fill(dtRegistration);
+            cnn.Close();
 
-                if(dtRegistration.Rows.Count > 0)
+            if (dtRegistration.Rows.Count > 0)
+            {
+                if ((Convert.ToInt32(dtRegistration.Rows[0]["mstTrainingRegistrationId"]) + 1).ToString().Length == 1)
                 {
-                    if((Convert.ToInt32(dtRegistration.Rows[0]["mstTrainingRegistrationId"]) + 1).ToString().Length == 1)
-                    {
-                        sStudentId += "00" + (Convert.ToInt32(dtRegistration.Rows[0]["mstTrainingRegistrationId"]) + 1).ToString();
-                    }
-                    else if ((Convert.ToInt32(dtRegistration.Rows[0]["mstTrainingRegistrationId"]) + 1).ToString().Length == 2)
-                    {
-                        sStudentId += "0" + (Convert.ToInt32(dtRegistration.Rows[0]["mstTrainingRegistrationId"]) + 1).ToString();
-                    }
-                    else
-                    {
-                        sStudentId += (Convert.ToInt32(dtRegistration.Rows[0]["mstTrainingRegistrationId"]) + 1).ToString();
-                    }
+                    sStudentId += "00" + (Convert.ToInt32(dtRegistration.Rows[0]["mstTrainingRegistrationId"]) + 1).ToString();
+                }
+                else if ((Convert.ToInt32(dtRegistration.Rows[0]["mstTrainingRegistrationId"]) + 1).ToString().Length == 2)
+                {
+                    sStudentId += "0" + (Convert.ToInt32(dtRegistration.Rows[0]["mstTrainingRegistrationId"]) + 1).ToString();
                 }
                 else
                 {
-                    sStudentId += "001";
+                    sStudentId += (Convert.ToInt32(dtRegistration.Rows[0]["mstTrainingRegistrationId"]) + 1).ToString();
                 }
-
-                cnn.Open();
-                cmd = cnn.CreateCommand();
-                cmd.CommandText = "insert into mstTrainingRegistration(name,courseTypeId,courseName,DOB,age,postalAddress,mobileNo,whatsppN0,emailId,createdDate,locationId,locationName,studentId)" 
-                    + "values(@name, @courseTypeId, @courseName, @DOB, @age, @postalAddress, @mobileNo, @whatsppN0, @emailId, datetime('now', 'localtime'),@locationId,@locationName,@studentId); ";
-                cmd.Parameters.AddWithValue("@name", txtName.Text.Trim());
-                cmd.Parameters.AddWithValue("@courseTypeId", cbCourseType.SelectedValue);
-                cmd.Parameters.AddWithValue("@courseName", cbCourseType.Text);
-                cmd.Parameters.AddWithValue("@DOB", dtpDOB.Value.ToString("yyyy-MM-dd"));
-                cmd.Parameters.AddWithValue("@age", txtAge.Text.Trim());
-                cmd.Parameters.AddWithValue("@postalAddress", txtAddress.Text.Trim());
-                cmd.Parameters.AddWithValue("@mobileNo", txtMobileNo.Text.Trim());
-                cmd.Parameters.AddWithValue("@whatsppN0", txtWPNo.Text.Trim());
-                cmd.Parameters.AddWithValue("@emailId", txtEmailId.Text.Trim());
-                cmd.Parameters.AddWithValue("@locationId", cmbLocation.SelectedValue);
-                cmd.Parameters.AddWithValue("@locationName", cmbLocation.Text);
-                cmd.Parameters.AddWithValue("@studentId", sStudentId);
-                int iResult = cmd.ExecuteNonQuery();
-                if (iResult > 0)
-                {
-                    MessageBox.Show("Registration successfully!!!");
-                }
-                cnn.Close();
-                this.Controls.Clear();
-                this.InitializeComponent();
-                reload();
             }
+            else
+            {
+                sStudentId += "001";
+            }
+
+            cnn.Open();
+            cmd = cnn.CreateCommand();
+            cmd.CommandText = "insert into mstTrainingRegistration(name,courseTypeId,courseName,DOB,age,postalAddress,mobileNo,whatsppN0,emailId,createdDate,locationId,locationName,studentId)"
+                + "values(@name, @courseTypeId, @courseName, @DOB, @age, @postalAddress, @mobileNo, @whatsppN0, @emailId, datetime('now', 'localtime'),@locationId,@locationName,@studentId); ";
+            cmd.Parameters.AddWithValue("@name", txtName.Text.Trim());
+            cmd.Parameters.AddWithValue("@courseTypeId", cbCourseType.SelectedValue);
+            cmd.Parameters.AddWithValue("@courseName", cbCourseType.Text);
+            cmd.Parameters.AddWithValue("@DOB", dtpDOB.Value.ToString("yyyy-MM-dd"));
+            cmd.Parameters.AddWithValue("@age", txtAge.Text.Trim());
+            cmd.Parameters.AddWithValue("@postalAddress", txtAddress.Text.Trim());
+            cmd.Parameters.AddWithValue("@mobileNo", txtMobileNo.Text.Trim());
+            cmd.Parameters.AddWithValue("@whatsppN0", txtWPNo.Text.Trim());
+            cmd.Parameters.AddWithValue("@emailId", txtEmailId.Text.Trim());
+            cmd.Parameters.AddWithValue("@locationId", cmbLocation.SelectedValue);
+            cmd.Parameters.AddWithValue("@locationName", cmbLocation.Text);
+            cmd.Parameters.AddWithValue("@studentId", sStudentId);
+            int iResult = cmd.ExecuteNonQuery();
+            if (iResult > 0)
+            {
+                MessageBox.Show("Registration successfully!!!");
+            }
+            cnn.Close();
+            this.Controls.Clear();
+            this.InitializeComponent();
+            reload();
+            //}
         }
         #endregion
 
@@ -200,7 +200,7 @@ namespace Registration_App
         #region Edit registration details
         private void dgvRegistrationReport_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex != -1)
+            if (e.RowIndex != -1)
             {
                 btnRegister.Enabled = false;
                 button1.Enabled = true;
@@ -239,63 +239,63 @@ namespace Registration_App
             }
             else
             {
-                Regex re = new Regex("^[0-9]{9}");
-                if (re.IsMatch(txtMobileNo.Text.Trim()) == false)
+                //Regex re = new Regex("^[0-9]{9}");
+                //if (re.IsMatch(txtMobileNo.Text.Trim()) == false)
+                //{
+                //    MessageBox.Show("Please enter valid mobile number");
+                //    txtMobileNo.Focus();
+                //}
+                //else if (re.IsMatch(txtWPNo.Text.Trim()) == false)
+                //{
+                //    MessageBox.Show("Please enter valid what's app number");
+                //    txtWPNo.Focus();
+                //}
+                //else if (ValidateEmailId(txtEmailId.Text.Trim()) == false)
+                //{
+                //    MessageBox.Show("Please enter valid email address");
+                //    txtEmailId.Focus();
+                //}
+                //else
+                //{
+                cnn.Open();
+                cmd = cnn.CreateCommand();
+                if (lblRegistrationId.Text.Trim().ToString().Length == 1)
                 {
-                    MessageBox.Show("Please enter valid mobile number");
-                    txtMobileNo.Focus();
+                    sStudentId += "00" + lblRegistrationId.Text.Trim().ToString();
                 }
-                else if (re.IsMatch(txtWPNo.Text.Trim()) == false)
+                else if (lblRegistrationId.Text.Trim().ToString().Length == 2)
                 {
-                    MessageBox.Show("Please enter valid what's app number");
-                    txtWPNo.Focus();
-                }
-                else if (ValidateEmailId(txtEmailId.Text.Trim()) == false)
-                {
-                    MessageBox.Show("Please enter valid email address");
-                    txtEmailId.Focus();
+                    sStudentId += "0" + lblRegistrationId.Text.Trim().ToString();
                 }
                 else
                 {
-                    cnn.Open();
-                    cmd = cnn.CreateCommand();
-                    if (lblRegistrationId.Text.Trim().ToString().Length == 1)
-                    {
-                        sStudentId += "00" + lblRegistrationId.Text.Trim().ToString();
-                    }
-                    else if (lblRegistrationId.Text.Trim().ToString().Length == 2)
-                    {
-                        sStudentId += "0" + lblRegistrationId.Text.Trim().ToString();
-                    }
-                    else
-                    {
-                        sStudentId += lblRegistrationId.Text.Trim().ToString();
-                    }
-                    cmd.CommandText = "update mstTrainingRegistration set name=@name,courseTypeId=@courseTypeId,courseName=@courseName,DOB=@DOB,age=@age,postalAddress=@postalAddress,mobileNo=@mobileNo,whatsppN0=@whatsppN0," +
-                        "emailId = @emailId,locationId = @locationId, locationName = @locationName, studentId = @studentId where mstTrainingRegistrationId = @mstTrainingRegistrationId; ";
-                    cmd.Parameters.AddWithValue("@name", txtName.Text.Trim());
-                    cmd.Parameters.AddWithValue("@courseTypeId", cbCourseType.SelectedValue);
-                    cmd.Parameters.AddWithValue("@courseName", cbCourseType.Text);
-                    cmd.Parameters.AddWithValue("@DOB", dtpDOB.Value.ToString("yyyy-MM-dd"));
-                    cmd.Parameters.AddWithValue("@age", txtAge.Text.Trim());
-                    cmd.Parameters.AddWithValue("@postalAddress", txtAddress.Text.Trim());
-                    cmd.Parameters.AddWithValue("@mobileNo", txtMobileNo.Text.Trim());
-                    cmd.Parameters.AddWithValue("@whatsppN0", txtWPNo.Text.Trim());
-                    cmd.Parameters.AddWithValue("@emailId", txtEmailId.Text.Trim());
-                    cmd.Parameters.AddWithValue("@mstTrainingRegistrationId", lblRegistrationId.Text);
-                    cmd.Parameters.AddWithValue("@locationId", cmbLocation.SelectedValue);
-                    cmd.Parameters.AddWithValue("@locationName", cmbLocation.Text);
-                    cmd.Parameters.AddWithValue("@studentId", sStudentId);
-                    int iResult = cmd.ExecuteNonQuery();
-                    if (iResult > 0)
-                    {
-                        MessageBox.Show("Registration updated successfully!!!");
-                    }
-                    cnn.Close();
-                    this.Controls.Clear();
-                    this.InitializeComponent();
-                    reload();
+                    sStudentId += lblRegistrationId.Text.Trim().ToString();
                 }
+                cmd.CommandText = "update mstTrainingRegistration set name=@name,courseTypeId=@courseTypeId,courseName=@courseName,DOB=@DOB,age=@age,postalAddress=@postalAddress,mobileNo=@mobileNo,whatsppN0=@whatsppN0," +
+                    "emailId = @emailId,locationId = @locationId, locationName = @locationName, studentId = @studentId where mstTrainingRegistrationId = @mstTrainingRegistrationId; ";
+                cmd.Parameters.AddWithValue("@name", txtName.Text.Trim());
+                cmd.Parameters.AddWithValue("@courseTypeId", cbCourseType.SelectedValue);
+                cmd.Parameters.AddWithValue("@courseName", cbCourseType.Text);
+                cmd.Parameters.AddWithValue("@DOB", dtpDOB.Value.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@age", txtAge.Text.Trim());
+                cmd.Parameters.AddWithValue("@postalAddress", txtAddress.Text.Trim());
+                cmd.Parameters.AddWithValue("@mobileNo", txtMobileNo.Text.Trim());
+                cmd.Parameters.AddWithValue("@whatsppN0", txtWPNo.Text.Trim());
+                cmd.Parameters.AddWithValue("@emailId", txtEmailId.Text.Trim());
+                cmd.Parameters.AddWithValue("@mstTrainingRegistrationId", lblRegistrationId.Text);
+                cmd.Parameters.AddWithValue("@locationId", cmbLocation.SelectedValue);
+                cmd.Parameters.AddWithValue("@locationName", cmbLocation.Text);
+                cmd.Parameters.AddWithValue("@studentId", sStudentId);
+                int iResult = cmd.ExecuteNonQuery();
+                if (iResult > 0)
+                {
+                    MessageBox.Show("Registration updated successfully!!!");
+                }
+                cnn.Close();
+                this.Controls.Clear();
+                this.InitializeComponent();
+                reload();
+                //}
             }
         }
         #endregion

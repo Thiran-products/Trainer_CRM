@@ -103,12 +103,10 @@ namespace Registration_App
         {
             cnn.Open();
             cmd = cnn.CreateCommand();
-            cmd.CommandText = "insert into trnAttendance(userId,courseId,attendanceDate,checkInTime,checkOutTime,createdDate)values(@userId,@courseId,@attendanceDate,@checkInTime,@checkOutTime,datetime('now', 'localtime'));";
+            cmd.CommandText = "insert into trnAttendance(userId,courseId,attendanceDate,checkInTime,checkOutTime,createdDate)values(@userId,@courseId,@attendanceDate,datetime('now', 'localtime'));";
             cmd.Parameters.AddWithValue("@userId", cmbUserName.SelectedValue);
             cmd.Parameters.AddWithValue("@courseId", cmbCourse.SelectedValue);
             cmd.Parameters.AddWithValue("@attendanceDate", DateTime.Now.Date);
-            cmd.Parameters.AddWithValue("@checkInTime", txtCheckIn.Text);
-            cmd.Parameters.AddWithValue("@checkOutTime", txtCheckOut.Text);
             int iResult = cmd.ExecuteNonQuery();
             if (iResult > 0)
             {
@@ -138,7 +136,7 @@ namespace Registration_App
             cnn.Close();
 
             dgvAttendanceDetails.AutoGenerateColumns = false;
-            dgvAttendanceDetails.ColumnCount = 7;
+            dgvAttendanceDetails.ColumnCount = 5;
             dgvAttendanceDetails.Columns[0].HeaderText = "trnAttendanceId";
             dgvAttendanceDetails.Columns[0].DataPropertyName = "trnAttendanceId";
             dgvAttendanceDetails.Columns[0].Visible = false;
@@ -154,10 +152,6 @@ namespace Registration_App
             dgvAttendanceDetails.Columns[4].Width = 150;
             dgvAttendanceDetails.Columns[4].HeaderText = "Attendance Date";
             dgvAttendanceDetails.Columns[4].DataPropertyName = "attendanceDate";
-            dgvAttendanceDetails.Columns[5].HeaderText = "Check In";
-            dgvAttendanceDetails.Columns[5].DataPropertyName = "checkInTime";
-            dgvAttendanceDetails.Columns[6].HeaderText = "check Out";
-            dgvAttendanceDetails.Columns[6].DataPropertyName = "checkOutTime";
 
             dgvAttendanceDetails.DataSource = dtRegistration;
         }
@@ -188,8 +182,6 @@ namespace Registration_App
                 lblAttendanceId.Text = dtRegistration.Rows[0]["trnAttendanceId"].ToString();
                 cmbUserName.SelectedValue = Convert.ToInt32(dtRegistration.Rows[0]["userId"]);
                 cmbCourse.SelectedValue = Convert.ToInt32(dtRegistration.Rows[0]["courseId"]);
-                txtCheckIn.Text = dtRegistration.Rows[0]["checkInTime"].ToString();
-                txtCheckOut.Text = dtRegistration.Rows[0]["checkOutTime"].ToString();
             }
         }
         #endregion
@@ -199,13 +191,11 @@ namespace Registration_App
         {
             cnn.Open();
             cmd = cnn.CreateCommand();
-            cmd.CommandText = "update trnAttendance set userId=@userId,courseId=@courseId,attendanceDate=@attendanceDate,checkInTime=@checkInTime,checkOutTime=@checkOutTime " +
+            cmd.CommandText = "update trnAttendance set userId=@userId,courseId=@courseId,attendanceDate=@attendanceDate " +
                 "where trnAttendanceId = @trnAttendanceId";
             cmd.Parameters.AddWithValue("@userId", cmbUserName.SelectedValue);
             cmd.Parameters.AddWithValue("@courseId", cmbCourse.SelectedValue);
             cmd.Parameters.AddWithValue("@attendanceDate", DateTime.Now.Date);
-            cmd.Parameters.AddWithValue("@checkInTime", txtCheckIn.Text);
-            cmd.Parameters.AddWithValue("@checkOutTime", txtCheckOut.Text);
             cmd.Parameters.AddWithValue("@trnAttendanceId", lblAttendanceId.Text);
             int iResult = cmd.ExecuteNonQuery();
             if (iResult > 0)

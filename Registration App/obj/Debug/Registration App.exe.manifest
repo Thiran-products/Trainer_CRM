@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Registration App.exe" size="362488">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Registration App.exe" size="360952">
       <assemblyIdentity name="Registration App" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wSx6AvVB+L+yXB3L3FN7ruWLyYH6BqIoFQQIi9NwUz4=</dsig:DigestValue>
+        <dsig:DigestValue>NkS5Pf+B89SC46c5ptqz8WxgCEHC7qlFRfvj4oBZK9M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
