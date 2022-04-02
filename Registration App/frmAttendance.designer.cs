@@ -104,9 +104,9 @@
             this.label7.Location = new System.Drawing.Point(53, 243);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(110, 17);
+            this.label7.Size = new System.Drawing.Size(128, 17);
             this.label7.TabIndex = 32;
-            this.label7.Text = "Student Name : ";
+            this.label7.Text = "Participant Name : ";
             // 
             // panel2
             // 

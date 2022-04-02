@@ -156,7 +156,7 @@ namespace Registration_App
         private void funPrint()
         {
             DGVPrinter print = new DGVPrinter();
-            print.Title = "Students Report";
+            print.Title = "Participant Report";
             print.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
             print.PageNumbers = true;
             print.PageNumberInHeader = false;

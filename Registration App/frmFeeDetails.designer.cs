@@ -176,11 +176,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(64, 177);
+            this.label7.Location = new System.Drawing.Point(54, 177);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 13);
+            this.label7.Size = new System.Drawing.Size(97, 13);
             this.label7.TabIndex = 30;
-            this.label7.Text = "Student Name : ";
+            this.label7.Text = "Participant Name : ";
             // 
             // label1
             // 
@@ -188,16 +188,16 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(39, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(253, 33);
+            this.label1.Size = new System.Drawing.Size(320, 33);
             this.label1.TabIndex = 29;
-            this.label1.Text = "Add Fees Details";
+            this.label1.Text = "Add Fees Transaction";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.panel2.Location = new System.Drawing.Point(-1, 82);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(298, 10);
+            this.panel2.Size = new System.Drawing.Size(359, 10);
             this.panel2.TabIndex = 28;
             // 
             // chkCompleted

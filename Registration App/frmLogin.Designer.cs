@@ -49,7 +49,6 @@ namespace Registration_App
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(253, 20);
             this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Admin";
             // 
             // textBox2
             // 

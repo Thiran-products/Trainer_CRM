@@ -259,5 +259,13 @@ namespace Registration_App
         {
             this.Close();
         }
+
+        private void branchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.mainpanel.Controls.Clear();
+            frmBranch branch = new frmBranch() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.mainpanel.Controls.Add(branch);
+            branch.Show();
+        }
     }
 }

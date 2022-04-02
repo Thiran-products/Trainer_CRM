@@ -25,12 +25,12 @@ namespace Registration_App
 
         private void frmDashboard_Load(object sender, EventArgs e)
         {
-            lbl_totalSales.Text = "0";
-            lbl_total_student.Text = "0";
-            lbl_course.Text = "0";
-            lbl_total_exp.Text = "0";
-            lbl_location.Text = "0";
-            lbl_Outstanding.Text = "0";
+            lbl_totalSales.Text = "000.00";
+            lbl_total_student.Text = "000.00";
+            lbl_course.Text = "000.00";
+            lbl_total_exp.Text = "000.00";
+            lbl_location.Text = "000.00";
+            lbl_Outstanding.Text = "000.00";
             getDashboardDetails();
         }
 

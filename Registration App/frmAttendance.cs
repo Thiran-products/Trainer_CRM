@@ -103,7 +103,7 @@ namespace Registration_App
         {
             cnn.Open();
             cmd = cnn.CreateCommand();
-            cmd.CommandText = "insert into trnAttendance(userId,courseId,attendanceDate,checkInTime,checkOutTime,createdDate)values(@userId,@courseId,@attendanceDate,datetime('now', 'localtime'));";
+            cmd.CommandText = "insert into trnAttendance(userId,courseId,attendanceDate,createdDate)values(@userId,@courseId,@attendanceDate,datetime('now', 'localtime'));";
             cmd.Parameters.AddWithValue("@userId", cmbUserName.SelectedValue);
             cmd.Parameters.AddWithValue("@courseId", cmbCourse.SelectedValue);
             cmd.Parameters.AddWithValue("@attendanceDate", DateTime.Now.Date);

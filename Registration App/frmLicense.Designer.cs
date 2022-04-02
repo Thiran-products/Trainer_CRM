@@ -37,17 +37,19 @@ namespace Registration_App
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 94);
+            this.label1.Location = new System.Drawing.Point(10, 49);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(174, 17);
+            this.label1.Size = new System.Drawing.Size(131, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Please enter product key :";
             // 
             // txtKey
             // 
-            this.txtKey.Location = new System.Drawing.Point(218, 94);
+            this.txtKey.Location = new System.Drawing.Point(10, 64);
+            this.txtKey.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtKey.Name = "txtKey";
-            this.txtKey.Size = new System.Drawing.Size(312, 22);
+            this.txtKey.Size = new System.Drawing.Size(235, 20);
             this.txtKey.TabIndex = 1;
             this.txtKey.UseSystemPasswordChar = true;
             // 
@@ -57,10 +59,9 @@ namespace Registration_App
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(218, 156);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Location = new System.Drawing.Point(11, 89);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(312, 44);
+            this.btnSave.Size = new System.Drawing.Size(234, 36);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Validate Key";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -68,12 +69,13 @@ namespace Registration_App
             // 
             // frmLicense
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 236);
+            this.ClientSize = new System.Drawing.Size(266, 139);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtKey);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmLicense";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "License";

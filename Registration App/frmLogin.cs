@@ -40,15 +40,15 @@ namespace Registration_App
             {
                 try
                 {
-                string vMacDetails = GetMacAddress().ToString();
-                checkMacAddressDetails(vMacDetails);
+                    string vMacDetails = GetMacAddress().ToString();
+                    checkMacAddressDetails(vMacDetails);
                 }
-                catch 
+                catch
                 {
 
-                    MessageBox.Show("Please Check Your Internet Connection !");
+                    MessageBox.Show("Database tables Missing!");
                 }
-               
+
             }
         }
 
@@ -57,7 +57,7 @@ namespace Registration_App
         {
             var myInterfaceAddress = NetworkInterface.GetAllNetworkInterfaces()
                 //.Where(n => n.OperationalStatus == OperationalStatus.Up && n.NetworkInterfaceType != NetworkInterfaceType.Loopback)
-                .Where(n =>  n.NetworkInterfaceType != NetworkInterfaceType.Loopback)
+                .Where(n => n.NetworkInterfaceType != NetworkInterfaceType.Loopback)
                 .OrderByDescending(n => n.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
                 .Select(n => n.GetPhysicalAddress())
                 .FirstOrDefault();
@@ -75,20 +75,20 @@ namespace Registration_App
                 DataTable dtMAC = new DataTable();
                 cnn.Open();
                 cmd = cnn.CreateCommand();
-                cmd.CommandText = "select * from mstMACAddress where macAddress ='"+ sMacAddress + "' and (date(startDate) <= '"+ dtCurrentDate.ToString("yyyy-MM-dd") + "' and date(endDate) >= '" + dtCurrentDate.ToString("yyyy-MM-dd") + "') and isActive = 1;";
+                cmd.CommandText = "select * from mstMACAddress where macAddress ='" + sMacAddress + "' and (date(startDate) <= '" + dtCurrentDate.ToString("yyyy-MM-dd") + "' and date(endDate) >= '" + dtCurrentDate.ToString("yyyy-MM-dd") + "') and isActive = 1;";
                 SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
                 sda.Fill(dtMAC);
                 cnn.Close();
-                if(dtMAC.Rows.Count > 0)
+                if (dtMAC.Rows.Count > 0)
                 {
-                    DataTable dtUser= new DataTable();
+                    DataTable dtUser = new DataTable();
                     cnn.Open();
                     cmd = cnn.CreateCommand();
-                    cmd.CommandText = "select * from mstLoginUsers where userName ='" + textBox1.Text.Trim() + "' and password = '"+textBox2.Text.Trim()+"' and isActive = 1;";
+                    cmd.CommandText = "select * from mstLoginUsers where userName ='" + textBox1.Text.Trim() + "' and password = '" + textBox2.Text.Trim() + "' and isActive = 1;";
                     SQLiteDataAdapter sdar = new SQLiteDataAdapter(cmd);
                     sdar.Fill(dtUser);
                     cnn.Close();
-                    if(dtUser.Rows.Count > 0)
+                    if (dtUser.Rows.Count > 0)
                     {
                         frmRegistrationApp registrationApp = new frmRegistrationApp();
                         registrationApp.Show();
@@ -105,7 +105,7 @@ namespace Registration_App
                     license.Show();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }

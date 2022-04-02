@@ -536,7 +536,7 @@ namespace Registration_App
             }
             else
             {
-                sBillNo += "001";
+                sBillNo += "000";
             }
 
 
@@ -562,16 +562,16 @@ namespace Registration_App
 
             String Business_name = "ThirdEye";
             String Business_tag = "CREATIVE TRAINERS & MENTORS";
-            String addressLine1 = "Address Line, Address Line, Address Line , Address Line 1 ";
-          //  String addressLine2 = "Address Line , Address Line ,Address Line 2 ";
+            String addressLine1 = "3rd Floor, Super Bazar Complex, Fort Road, Kannur Kerala - 670001";
+            String contact = "Contact  : 9447438753 | 0497 2763677";
 
             //print header
             graphics.DrawString(Business_name, title_font, Brushes.Black, 350, 40);  // y 20 +
             graphics.DrawString(Business_tag, subtitle_font, Brushes.Black, 300, 80);
 
             //graphics.DrawLine(Pens.Black, 10, 90, 800, 90);                       // y 100+
-            graphics.DrawString(addressLine1, small, Brushes.Black, 280, 100);
-           // graphics.DrawString(addressLine2, small, Brushes.Black, 35, 115);
+            graphics.DrawString(addressLine1, small, Brushes.Black, 245, 100);
+            graphics.DrawString(contact, small, Brushes.Black, 330, 115);
             graphics.DrawLine(Pens.Black, 20, 130, 800, 130);
 
             graphics.DrawString("Bill No : " + sBillNo, subtitle_font, Brushes.Black, 40, 140);
